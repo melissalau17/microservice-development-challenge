@@ -1,0 +1,104 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: marketplace
+      POSTGRES_PASSWORD: marketplace
+      POSTGRES_DB: marketplace
+    ports:
+      - "5432:5432"
+
+  service-discovery:
+    build:
+      context: ./service-discovery
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - postgres
+    networks:
+      - marketplace-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - service-discovery
+    networks:
+      - marketplace-network
+
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["java", "-jar", "user-service-1.0.0.jar"]
+    ports:
+      - "8081:8081"
+    depends_on:
+      - discovery-server
+      - postgres
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["java", "-jar", "product-service-1.0.0.jar"]
+    ports:
+      - "8082:8082"
+    depends_on:
+      - discovery-server
+      - postgres
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+
+  cart-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["java", "-jar", "cart-service-1.0.0.jar"]
+    ports:
+      - "8083:8083"
+    depends_on:
+      - discovery-server
+      - postgres
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+
+  email-service:
+    build: ./email-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - discovery-server
+    networks:
+      - marketplace-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - discovery-server
+    networks:
+      - marketplace-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+
+networks:
+  marketplace-network:
+    driver: bridge
