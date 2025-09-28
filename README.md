@@ -1,7 +1,3 @@
-Here’s a comprehensive and structured version of your README for the **Online Marketplace Microservices** project:
-
----
-
 # Online Marketplace Microservices
 
 A **Spring Boot-based microservices architecture** for an online marketplace, designed for scalability, modularity, and maintainability. This project demonstrates a real-world application of microservices using Spring Cloud components.
