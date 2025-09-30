@@ -16,7 +16,6 @@ A **Spring Boot-based microservices architecture** for an online marketplace, de
 8. [Database](#database)
 9. [Docker & Docker Compose](#docker--docker-compose)
 10. [Project Structure](#project-structure)
-11. [Future Improvements](#future-improvements)
 
 ---
 
