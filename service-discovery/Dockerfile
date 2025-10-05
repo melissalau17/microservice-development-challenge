@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn -f /app/pom.xml clean install -DskipTests
+RUN mvn -f pom.xml clean install -DskipTests
 
 RUN mvn -pl service-discovery -am clean package -DskipTests
 
