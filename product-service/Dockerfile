@@ -2,6 +2,7 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 COPY . .
+RUN mvn -f /app/pom.xml clean install -DskipTests
 RUN mvn -pl product-service -am clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
