@@ -46,7 +46,7 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - discovery-server
+      - service-discovery
       - postgres
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
@@ -59,7 +59,7 @@ services:
     ports:
       - "8082:8082"
     depends_on:
-      - discovery-server
+      - service-discovery
       - postgres
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
@@ -72,7 +72,7 @@ services:
     ports:
       - "8083:8083"
     depends_on:
-      - discovery-server
+      - service-discovery
       - postgres
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
@@ -82,7 +82,7 @@ services:
     ports:
       - "8084:8084"
     depends_on:
-      - discovery-server
+      - service-discovery
     networks:
       - marketplace-network
     environment:
@@ -93,7 +93,7 @@ services:
     ports:
       - "8085:8085"
     depends_on:
-      - discovery-server
+      - service-discovery
     networks:
       - marketplace-network
     environment:
