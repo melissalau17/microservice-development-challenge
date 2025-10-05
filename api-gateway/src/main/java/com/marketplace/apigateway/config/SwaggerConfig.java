@@ -1,40 +1,26 @@
 package com.marketplace.apigateway.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
 
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.OAS_30)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+            .info(new Info()
                 .title("Marketplace API Gateway")
                 .description("Central API Gateway for Marketplace Microservices")
                 .version("1.0.0")
-                .contact(new Contact(
-                        "Marketplace Team", 
-                        "http://marketplace.com", 
-                        "support@marketplace.com"
-                ))
-                .build();
+                .contact(new Contact()
+                    .name("Marketplace Team")
+                    .url("http://marketplace.com")
+                    .email("support@marketplace.com")
+                )
+            );
     }
 }
