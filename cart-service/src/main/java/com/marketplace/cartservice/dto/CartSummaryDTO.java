@@ -26,6 +26,6 @@ public class CartSummaryDTO {
     public int getItemCount() { return itemCount; }
     public void setItemCount(int itemCount) { this.itemCount = itemCount; }
 
-    public Double getTotalAmount() { return totalAmount; }
-    public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
+    public BigDecimal getTotalAmount() { return totalAmount; }
+    public void setTotalAmount(BigDecimal totalAmount) { this.totalAmount = totalAmount; }
 }

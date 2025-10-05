@@ -9,6 +9,7 @@ public class CartItemDTO {
     private BigDecimal unitPrice;
     private Integer quantity;
     private BigDecimal subtotal;
+    private LocalDateTime addedAt; 
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -28,4 +29,7 @@ public class CartItemDTO {
 
     public BigDecimal getSubtotal() { return subtotal; }
     public void setSubtotal(BigDecimal subtotal) { this.subtotal = subtotal; }
+
+    public LocalDateTime getAddedAt() { return addedAt; }  
+    public void setAddedAt(LocalDateTime addedAt) { this.addedAt = addedAt; }  
 }
