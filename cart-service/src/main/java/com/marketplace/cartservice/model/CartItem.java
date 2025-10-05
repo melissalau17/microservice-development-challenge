@@ -2,6 +2,7 @@ package com.marketplace.cartservice.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cart_items")
