@@ -1,15 +1,15 @@
 package com.marketplace.cartservice.dto;
+import java.math.BigDecimal;
 
 public class CartSummaryDTO {
     private Long userId;
     private int totalItems;
     private int itemCount;
-    private Double totalAmount;
+    private BigDecimal totalAmount;
 
-    // Constructors
     public CartSummaryDTO() {}
 
-    public CartSummaryDTO(Long userId, int totalItems, int itemCount, Double totalAmount) {
+    public CartSummaryDTO(Long userId, int totalItems, int itemCount, BigDecimal totalAmount) {
         this.userId = userId;
         this.totalItems = totalItems;
         this.itemCount = itemCount;

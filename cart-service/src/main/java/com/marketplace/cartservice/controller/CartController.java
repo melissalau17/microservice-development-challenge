@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.math.BigDecimal;
 
 import java.util.stream.Collectors;
 
@@ -212,7 +213,7 @@ public class CartController {
         private Long userId;
         private int totalItems;
         private int itemCount;
-        private Double totalAmount;
+        private BigDecimal  totalAmount;
 
         // Getters and Setters
         public Long getUserId() { return userId; }
@@ -224,7 +225,7 @@ public class CartController {
         public int getItemCount() { return itemCount; }
         public void setItemCount(int itemCount) { this.itemCount = itemCount; }
 
-        public Double getTotalAmount() { return totalAmount; }
-        public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
+        public BigDecimal getTotalAmount() { return totalAmount; }
+        public void setTotalAmount(BigDecimal totalAmount) { this.totalAmount = totalAmount; }
     }
 }

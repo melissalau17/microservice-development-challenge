@@ -77,4 +77,8 @@ public class CartItem {
             cart.calculateTotal();
         }
     }
+
+    private LocalDateTime addedAt;
+    public LocalDateTime getAddedAt() { return addedAt; }
+    public void setAddedAt(LocalDateTime addedAt) { this.addedAt = addedAt; }
 }
