@@ -1,14 +1,5 @@
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-
-COPY ./ /app
-
-RUN mvn -f /app/pom.xml clean install -DskipTests
-
-RUN mvn -pl service-discovery -am clean package -DskipTests
-
-FROM eclipse-temurin:17-jre
-WORKDIR /app
-COPY --from=build /app/service-discovery/target/*.jar app.jar
-EXPOSE 8080
+COPY target/service-discovery-1.0.0.jar app.jar
+EXPOSE 8761
 ENTRYPOINT ["java", "-jar", "app.jar"]

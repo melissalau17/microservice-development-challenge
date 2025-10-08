@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>online-marketplace</artifactId>
         <groupId>com.marketplace</groupId>
+        <artifactId>online-marketplace</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>product-service</artifactId>
@@ -43,4 +44,12 @@
             <version>2.3.0</version>
         </dependency>
     </dependencies>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 </project>

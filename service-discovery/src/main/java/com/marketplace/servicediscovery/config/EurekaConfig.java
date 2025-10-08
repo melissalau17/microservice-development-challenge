@@ -13,9 +13,10 @@ public class EurekaConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/eureka/**").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated()
             );
+
         return http.build();
     }
 }

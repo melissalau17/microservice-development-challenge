@@ -96,7 +96,6 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    // Helper method to convert Entity to DTO
     private ProductDTO convertToDTO(Product product) {
         ProductDTO dto = new ProductDTO();
         dto.setId(product.getId());
